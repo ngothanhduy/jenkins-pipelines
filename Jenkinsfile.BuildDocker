@@ -6,7 +6,7 @@ buildDockerImage(
         steps {
             echo "Test Docker Image"
         }
-    }
+    },
     stage("Publish Docker Image") {
         steps {
             echo "Test Docker Image"
