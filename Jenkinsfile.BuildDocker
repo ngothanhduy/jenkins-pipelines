@@ -1,0 +1,15 @@
+@Library('jenkins-shared-libs') _
+
+buildDockerImage(
+    repo: "https://github.com/ngothanhduy/jenkins-pipelines.git",
+    stage("Test Docker Image") {
+        steps {
+            echo "Test Docker Image"
+        }
+    }
+    stage("Publish Docker Image") {
+        steps {
+            echo "Test Docker Image"
+        }
+    }
+)
