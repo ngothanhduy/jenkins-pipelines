@@ -3,6 +3,10 @@
 pipeline {
     agent any
 
+    options {
+        ansiColor('xterm')
+    }
+
     parameters {
         choice(name: 'TYPE', choices: ['python', 'bash'], description: 'Lib type.')
         string(name: 'FUNCTION', defaultValue: '', description: 'Function name.')
