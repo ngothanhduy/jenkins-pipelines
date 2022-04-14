@@ -1,0 +1,29 @@
+@Library('jenkins-shared-libs') _
+
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'TYPE', choices: ['python', 'bash'], description: 'Lib type.')
+        string(name: 'FUNCTION', defaultValue: '', description: 'Function name.')
+    }
+
+    stages {
+        stage("Run Script") {
+            steps {
+                script {
+                    loadScript(
+                        lib: params.TYPE,
+                        function: params.FUNCTION
+                    )
+                }
+            }
+        }
+    }
+
+    post {
+        cleanup {
+            cleanWs deleteDirs: true
+        }
+    }
+}
