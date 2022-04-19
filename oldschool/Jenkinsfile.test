@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    options {
+        timeout(10)
+        timestamps()
+        skipDefaultCheckout()
+        buildDiscarder logRotator(artifactDaysToKeepStr: '10', artifactNumToKeepStr: '10', daysToKeepStr: '10', numToKeepStr: '10')
+    }
+
+    parameters {
+        string(name: 'TEST', defaultValue: '')
+    }
+
+    stages {
+        stage("test") {
+            steps {
+                script {
+                    env.TEST = "new_env_${params.TEST}"
+                    println("PARAMS: " + params.TEST)
+                    println("ENV: " + env.TEST)
+                }
+            }
+        }
+    }
+
+    post {
+        cleanup {
+            cleanWs deleteDirs: true
+        }
+    }
+}
