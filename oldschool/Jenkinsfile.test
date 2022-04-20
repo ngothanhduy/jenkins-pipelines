@@ -16,6 +16,7 @@ pipeline {
         stage("test") {
             steps {
                 script {
+                    println("ENV: " + env.TEST)
                     env.TEST = "new_env_${params.TEST}"
                     println("PARAMS: " + params.TEST)
                     println("ENV: " + env.TEST)
