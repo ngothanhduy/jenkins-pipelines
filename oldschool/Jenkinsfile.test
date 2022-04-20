@@ -22,6 +22,10 @@ pipeline {
                     println("new ENV: " + env.TEST)
                     println("new PARAMS: " + params.TEST)
                     println("This is not have header: ${TEST}")
+                    params.TEST = "new_params_${params.TEST}"
+                    println("Change params: ${TEST}")
+                    println("Change params: ${params.TEST}")
+                    println("Change params: ${env.TEST}")
                 }
             }
         }
